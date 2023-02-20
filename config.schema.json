@@ -58,7 +58,13 @@
                 "title": "DisableLogging",
                 "type": "boolean",
                 "default": false,
-                "description": "No state change information (On/Off) will be logged. "
+                "description": "No state change information (On/Off) will be logged."
+            },
+            "serial": {
+                "title": "Serial",
+                "type": "string",
+                "required": false,
+                "description": "Optional serial number of the device. If not provided the device name is used."
             }
 
         }

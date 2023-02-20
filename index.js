@@ -15,6 +15,7 @@ module.exports = function(homebridge) {
 function DummySwitch(log, config) {
   this.log = log;
   this.name = config.name;
+  this.serial = config.serial || "Dummy-" + this.name.replace(/\s/g, '-');
   this.stateful = config.stateful;
   this.dimmer = config.dimmer;
   this.brightness = config.brightness;
@@ -39,7 +40,7 @@ function DummySwitch(log, config) {
       .setCharacteristic(Characteristic.Manufacturer, 'Homebridge')
       .setCharacteristic(Characteristic.Model, this.modelString)
       .setCharacteristic(Characteristic.FirmwareRevision, HomebridgeDummyVersion)
-      .setCharacteristic(Characteristic.SerialNumber, 'Dummy-' + this.name.replace(/\s/g, '-'));
+      .setCharacteristic(Characteristic.SerialNumber, this.serial);
   
   this.cacheDirectory = HomebridgeAPI.user.persistPath();
   this.storage = require('node-persist');
